@@ -35,7 +35,7 @@ const isAuthenticated = async(req,res,next) => {
     const {token} = req.cookies;
     if(token){
 
-        const decoded = jwt.verify(token,"shwetalovesabhay");
+        const decoded = jwt.verify(token,"ilovemomos");
         req.user =await User.findById(decoded._id);
         next();
     }
@@ -87,7 +87,7 @@ if(!user) return res.redirect("/register");
 
  if(!isMatch) return res.render("login",{email,message:"Invalid Credentials"});
 
- const token = jwt.sign({_id:user._id},"shwetalovesabhay");
+ const token = jwt.sign({_id:user._id},"ilovemomos");
  // console.log(token);
 
  res.cookie("token",token,{
@@ -111,7 +111,7 @@ const{name ,email, password} = req.body;
         name,email,password: hashedPassword
     });
 
-    const token = jwt.sign({_id:user._id},"shwetalovesabhay");
+    const token = jwt.sign({_id:user._id},"ilovemomos");
     // console.log(token);
 
     res.cookie("token",token,{
